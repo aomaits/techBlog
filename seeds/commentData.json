@@ -1,0 +1,17 @@
+[
+    {
+        "content": "I know React.",
+        "post_id": 2,
+        "user_id": 1
+    },
+    {
+        "content": "Wow, who wrote this?",
+        "post_id": 2,
+        "user_id": 2
+    },
+    {
+        "content": "I know CSS.",
+        "post_id": 1,
+        "user_id": 1
+    }
+]
