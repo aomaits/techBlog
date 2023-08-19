@@ -9,7 +9,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 // Import the connection object
-const sequelize = require('./config/connection');
+const sequelize = require('./config/connection.js/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Initialize an instance of Express.js
