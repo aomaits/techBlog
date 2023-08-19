@@ -4,9 +4,11 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
+console.log('running?')
+
 //required middlewear
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
 
 // Import the connection object
 const sequelize = require('./config/connection.js/connection');
