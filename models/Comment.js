@@ -12,11 +12,11 @@ Comment.init(
             autoIncrement: true,
             },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         date_created: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
