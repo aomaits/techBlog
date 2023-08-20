@@ -59,6 +59,9 @@ body {
     flex: 1 1 0;
     padding-right: 5%;
   }
+  #createdByLine {
+    font-size: 90%;
+  }
   
   article {
     border-bottom: 1px solid #d8a47f;

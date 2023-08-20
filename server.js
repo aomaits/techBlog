@@ -4,14 +4,12 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
-console.log('running?')
-
 //required middlewear
 const routes = require('./controllers');
 // const helpers = require('./utils/helpers');
 
 // Import the connection object
-const sequelize = require('./config/connection.js/connection');
+const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Initialize an instance of Express.js
@@ -21,7 +19,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create();
 
 const sess = {
     secret: 'Super secret secret', //string used to sign the session ID cookie
