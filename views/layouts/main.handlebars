@@ -14,8 +14,12 @@
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#">Dashboard</a></li> 
+          {{#if loggedIn}}
+          <li><a href="#">Log Out</a></li>
+          {{else}}
+          <li><a href="/login">Log In</a></li>
+          {{/if}}
         </ul>
       </nav>
     </header>

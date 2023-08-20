@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Comment, Post, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
+//homepage route
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -23,5 +24,17 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// login route
+router.get('/login', (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+})
+
+//dashboard route
+
 
 module.exports = router;
