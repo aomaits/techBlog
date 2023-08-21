@@ -20,6 +20,8 @@ router.get('/', async (req, res) => {
             posts,
             logged_in: req.session.logged_in
         });
+
+        console.log('homepage route running')
     } catch (error) {
         res.status(500).json(err);
     }
@@ -27,12 +29,13 @@ router.get('/', async (req, res) => {
 
 // login route
 router.get('/login', (req, res) => {
-    try {
-        
-    } catch (error) {
-        
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
     }
-})
+
+    res.render('login');
+});
 
 //dashboard route
 

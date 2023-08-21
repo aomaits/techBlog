@@ -3,36 +3,37 @@ const router = require('express').Router();
 const User = require('../../models/User');
 
 // GET method to read all users
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll();
-    res.status(200).json(userData);
-  // catches any errors and sends error response
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// POST method to create new user
-// router.post('/', async (req, res) => {
+// router.get('/', async (req, res) => {
 //   try {
-//     const userData = await User.create(req.body);
-    // save user id and logged in status to session
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-//       res.status(200).json(userData);
-//     });
+//     const userData = await User.findAll();
+//     res.status(200).json(userData);
+//   // catches any errors and sends error response
 //   } catch (err) {
-//     res.status(400).json(err.message);
+//     res.status(500).json(err);
 //   }
 // });
 
+// POST method to create new user
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    // save user id and logged in status to session
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
+});
+
 // POST method route for existing users to log in
 router.post('/login', async (req, res) => {
+  console.log('Post route running')
   try {
-    // find user by player name
-    const userData = await User.findOne({ where: { player_name: req.body.player_name } });
+    // find user by user name
+    const userData = await User.findOne({ where: { name: req.body.user_name } });
     // if no user, send error message
     if (!userData) {
       res
