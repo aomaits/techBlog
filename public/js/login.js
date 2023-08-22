@@ -2,7 +2,6 @@ console.log('handlebars is accessing login.js')
 
 // function for the log in form. User alerted if log in works or fails
 const loginFormHandler = async (event) => {
-    console.log('login form handler running')
     event.preventDefault();
     const user_name = document.querySelector('#user-login').value.trim();
     console.log("this is the user_name: " + user_name);
@@ -28,7 +27,10 @@ const signupFormHandler = async (event) => {
     console.log('signup form handler running')
     event.preventDefault();
     const user_name = document.querySelector('#name-signup').value.trim();
+    console.log("this is the New user_name: " + user_name);
     const password = document.querySelector('#password-signup').value.trim();
+    console.log("this is the password: " + password);
+
     if (user_name && password) {
         const response = await fetch('/api/users', {
             method: 'POST',
@@ -36,7 +38,7 @@ const signupFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-            alert('Congratulations! You are now signed up with the Tech Blog!');
+            alert('Congratulations, ' + user_name + '! You are now signed up with the Tech Blog!');
         } else {
             alert('Please make your password at least 8 characters long.');
         }

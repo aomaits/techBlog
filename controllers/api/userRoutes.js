@@ -16,11 +16,14 @@ const User = require('../../models/User');
 // POST method to create new user
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      name: req.body.user_name, //should be username?
+      password: req.body.password,
+    });
     // save user id and logged in status to session
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -52,9 +55,11 @@ router.post('/login', async (req, res) => {
     }
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;      
+      req.session.loggedIn = true;      
       res.json({ user: userData, message: 'You are now logged in!' });
     });
+
+    
   } catch (err) {
     res.status(400).json(err);
   }
@@ -63,7 +68,7 @@ router.post('/login', async (req, res) => {
 // POST method route to log out
 router.post('/logout', (req, res) => {
   // check if user is authenticated
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     // destroy session data
     req.session.destroy(() => {
       res.status(204).end();
