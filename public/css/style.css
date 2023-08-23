@@ -60,6 +60,19 @@ body {
     padding-right: 5%;
   }
   
+  .blogPostContent {
+    color: rgb(33, 31, 100);
+  }
+
+  .commentLine {
+    font-size: 90%;
+  }
+
+  #homepagePosts {
+    text-decoration: none;
+    color: (33, 31, 100);
+  }
+  
   article {
     border-bottom: 1px solid #d8a47f;
   }
