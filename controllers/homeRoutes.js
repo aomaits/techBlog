@@ -21,11 +21,43 @@ router.get('/', async (req, res) => {
             loggedIn: req.session.loggedIn
         });
 
-        console.log('homepage route running')
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(error);
     }
 });
+
+//blogpost route
+router.get('/blog/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk( req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    include: [
+                        {
+                            model: User,
+                            attributes: ['name'],
+                        },
+                    ]
+                }
+            ],
+        })
+        const post = postData.get({ plain: true });
+        console.log(post);
+
+        res.render('blogPost', {
+            loggedIn: req.session.loggedIn,
+            ...post
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+})
 
 // login route
 router.get('/login', (req, res) => {

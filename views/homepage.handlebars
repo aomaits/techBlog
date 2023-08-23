@@ -1,15 +1,13 @@
     <main>
       <section>
         {{#each posts as |post| }}
+        <a href="/blog/{{post.id}}" id="homepagePosts">
         <article>
           <h2>{{post.title}} </h2>
-          <p id="createdByLine">Created by {{post.user.name}} on {{post.date_created}}</p>
-          <div>
-            <p>
-              {{post.content}}
-            </p>
-          </div>
+          {{!-- just the title and date created --}}
+          <p>Created on {{post.date_created}}</p>
         </article>
+        </a>
         {{/each}}
       </section>
     </main>
