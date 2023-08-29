@@ -1,12 +1,8 @@
-console.log('handlebars is accessing login.js')
-
 // function for the log in form. User alerted if log in works or fails
 const loginFormHandler = async (event) => {
     event.preventDefault();
     const user_name = document.querySelector('#user-login').value.trim();
-    console.log("this is the user_name: " + user_name);
     const password = document.querySelector('#password-login').value.trim();
-    console.log("this is the password: " + password);
 
     if (user_name && password) {
         const response = await fetch('/api/users/login', {
@@ -16,6 +12,7 @@ const loginFormHandler = async (event) => {
         });
         if (response.ok) {
             alert(`Welcome back, ${user_name}`)
+            document.location.replace(`/`)
         } else {
             alert('User/password combination does not exist. Sign up first!')
         }
@@ -24,12 +21,9 @@ const loginFormHandler = async (event) => {
 
 // function for the sign up form. User alerted if sign up works or fails
 const signupFormHandler = async (event) => {
-    console.log('signup form handler running')
     event.preventDefault();
     const user_name = document.querySelector('#name-signup').value.trim();
-    console.log("this is the New user_name: " + user_name);
     const password = document.querySelector('#password-signup').value.trim();
-    console.log("this is the password: " + password);
 
     if (user_name && password) {
         const response = await fetch('/api/users', {

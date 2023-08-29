@@ -59,9 +59,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 })
 
-//event listener for adding comments
-
-
 // login route
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
