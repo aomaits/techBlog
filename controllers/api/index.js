@@ -1,13 +1,13 @@
 // import express router
 const router = require('express').Router();
 
-// import user and leaderboard route modules
+// import user and comment route modules
 const userRoutes = require('./userRoutes');
-// const leaderboardRoutes = require('./leaderboardRoutes');
+const commentRoutes = require('./commentRoutes');
 
-// mount routes at /users and /leaderboards paths
+// mount routes at /users and /comment paths
 router.use('/users', userRoutes);
-// router.use('/leaderboards', leaderboardRoutes);
+router.use('/comments', commentRoutes);
 
 // export router
 module.exports = router;
