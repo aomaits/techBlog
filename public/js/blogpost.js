@@ -6,35 +6,19 @@ const commentFormHandler = async (event) => {
     const commentBody = document.querySelector('#comment-input').value.trim();
     console.log('this is the comment-input: ' + commentBody);
 
-    const response = await fetch('/api/comments/', {
+    const response = await fetch('/api/comments/blog/:post_id', {
         method: 'POST',
-        body: JSON.stringify({ user_name, password }),
+        body: JSON.stringify({ commentBody }),
         headers: { 'Content-Type': 'application/json' },
     });
-}
-
-// function for the log in form. User alerted if log in works or fails
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-    const user_name = document.querySelector('#user-login').value.trim();
-    console.log("this is the user_name: " + user_name);
-    const password = document.querySelector('#password-login').value.trim();
-    console.log("this is the password: " + password);
-
-    if (user_name && password) {
-        const response = await fetch('/api/users/login', {
-            method: 'POST',
-            body: JSON.stringify({ user_name, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        if (response.ok) {
-            alert(`Welcome back, ${user_name}`)
-            document.location.replace(`/`)
-        } else {
-            alert('User/password combination does not exist. Sign up first!')
-        }
+    if (response.ok) {
+        console.log(response)
+        // TODO what actually happens w/ this response? 
+        // document.location.replace('/profile');
+    } else {
+        console.log('call failed')
     }
-};
+}
 
 // function for the sign up form. User alerted if sign up works or fails
 // const signupFormHandler = async (event) => {
@@ -59,7 +43,7 @@ const loginFormHandler = async (event) => {
 //     }
 // };
 
-// submit button created for log in
+// listen for click of comment button 
 document
     .querySelector('#comment-button')
     .addEventListener('click', commentFormHandler);

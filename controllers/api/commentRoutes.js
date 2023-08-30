@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const Comment = require('../../models/Comment');
+const withAuth = require('../../utils/auth');
 
 // POST method to create new comment
-router.post('/blog/:post_id', async (req, res) => {
+router.post('/blog/:post_id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.create({
             content: req.body.content,
@@ -15,3 +16,6 @@ router.post('/blog/:post_id', async (req, res) => {
         res.status(400).json(err.message);
     }
 });
+
+// export user routes as module
+module.exports = router;
