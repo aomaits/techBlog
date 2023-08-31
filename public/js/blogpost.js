@@ -5,15 +5,20 @@ const commentFormHandler = async (event) => {
     event.preventDefault();
     const commentBody = document.querySelector('#comment-input').value.trim();
     console.log('this is the comment-input: ' + commentBody);
+    const idPath = window.location.pathname.split('/');
+    const id = idPath[idPath.length - 1];
 
-    const response = await fetch('/api/comments/blog/:post_id', {
+    const response = await fetch('/api/comments/blog/', {
         method: 'POST',
-        body: JSON.stringify({ commentBody }),
+        body: JSON.stringify({
+            content: commentBody,
+            post_id: id,
+        }),
         headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
         console.log(response)
-        // TODO what actually happens w/ this response? 
+        
         // document.location.replace('/profile');
     } else {
         console.log('call failed')

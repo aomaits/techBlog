@@ -56,6 +56,6 @@ app.use(routes);
 
 // listen() method is responsible for listening for incoming connections on the specified port 
 // Force false so data doesn't get dropped on every sync
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false, logging: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening on port 3001'));
 });
