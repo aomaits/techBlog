@@ -5,7 +5,7 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const commentRoutes = require('./commentRoutes');
 
-// mount routes at /users and /comment paths
+// mount routes at /users and /comments paths
 router.use('/users', userRoutes);
 router.use('/comments', commentRoutes);
 

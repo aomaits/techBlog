@@ -16,9 +16,9 @@
           <li><a href="/">Homepage</a></li>
           <li><a href="#">Dashboard</a></li> 
           {{#if loggedIn}}
-          <li><a href="#">Log Out</a></li>
+          <li id="logout"><a href="/logout">Log Out</a></li>
           {{else}}
-          <li><a href="/login">Log In</a></li>
+          <li id="login"><a href="/login">Log In</a></li>
           {{/if}}
         </ul>
       </nav>
