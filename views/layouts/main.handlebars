@@ -15,11 +15,12 @@
         <ul>
           <li><a href="/">Homepage</a></li>
           <li><a href="#">Dashboard</a></li> 
-          {{#if loggedIn}}
+          {{!-- {{#if loggedIn}} --}}
           <li id="logout"><a href="/logout">Log Out</a></li>
-          {{else}}
-          <li id="login"><a href="/login">Log In</a></li>
-          {{/if}}
+            
+          {{!-- {{else}} --}}
+          <li><a href="/login">Log In</a></li>
+          {{!-- {{/if}} --}}
         </ul>
       </nav>
     </header>
@@ -28,3 +29,4 @@
 
   </body>
 </html>
+<script src="/js/logout.js/"></script>
