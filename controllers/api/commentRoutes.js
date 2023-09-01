@@ -10,6 +10,9 @@ router.post('/blog/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
         });
 
+        const commentID = req.params.user_id;
+        document.location.replace(`/blog/${commentID}`)
+        
         res.status(200).json(commentData);
     } catch (err) {
         res.status(400).json(err.message);
