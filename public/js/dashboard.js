@@ -1,7 +1,9 @@
+
+
 const fetchUserPosts = async () => {
     console.log('fetch user posts attempted')
   try {
-    const response = await fetch(`/api/users/dashboard/${user_id}`);
+    const response = await fetch(`/api/users/dashboard/${session.user_id}`);
     
     if (response.ok) {
       const posts = await response.json();
