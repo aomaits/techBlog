@@ -1,17 +1,29 @@
 // import express router and User model
 const router = require('express').Router();
-const User = require('../../models/User');
+const { User, Post } = require('../../models');
 
 // GET method to read all users
-// router.get('/', async (req, res) => {
-//   try {
-//     const userData = await User.findAll();
-//     res.status(200).json(userData);
-//   // catches any errors and sends error response
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    res.status(200).json(userData);
+  // catches any errors and sends error response
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET method to find all posts by a user (for the dashboard)
+router.get('/dashboard/:id', async (req, res) => {
+  try {
+    const dashboardData = await Post.findAll({ where: { user_id: req.params.id}});
+
+    res.status(200).json(dashboardData);
+
+  }catch (err) {
+    res.status(500).json(err);
+  }
+});  
 
 // POST method to create new user
 router.post('/', async (req, res) => {
