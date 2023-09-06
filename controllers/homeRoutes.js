@@ -70,6 +70,28 @@ router.get('/login', (req, res) => {
 });
 
 //dashboard route
+router.get('/dashboard', withAuth, async (req, res) =>{
+    try {
+        const postData = await Post.findAll({
+            where: {user_id: req.session.user_id},
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
 
+        const posts = postData.map((post) => post.get({ plain: true }));
+
+        res.render('dashboard', {
+            posts,
+            loggedIn: req.session.loggedIn
+        });
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
 
 module.exports = router;

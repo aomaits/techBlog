@@ -15,7 +15,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // Initialize an instance of Express.js
 const app = express();
 
-// Specify on which port the Express.js server will run
+// Specify on which port the Express.js server will run 
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers

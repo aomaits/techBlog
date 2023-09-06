@@ -1,7 +1,7 @@
 const fetchUserPosts = async () => {
     console.log('fetch user posts attempted')
   try {
-    const response = await fetch(`/api/dashboard/${userId}`);
+    const response = await fetch(`/api/users/dashboard/${user_id}`);
     
     if (response.ok) {
       const posts = await response.json();
@@ -17,4 +17,5 @@ const fetchUserPosts = async () => {
 };
 
 
-document.querySelector('#dashboard').addEventListener('click', fetchUserPosts);
+// document.querySelector('#dashboard').addEventListener('click', 
+fetchUserPosts();
