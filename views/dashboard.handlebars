@@ -1,1 +1,30 @@
-<h1>TEST TEST TEST</h1>
+<div class="text-center">
+  <h2 class="blogPostContent">{{title}} </h2>
+  <p class="blogPostContent">{{content}}</p>
+  <p class="blogPostContent">Created by {{user.name}} on {{date_created}}</p>
+    {{!-- add second button - one to edit, one to delete --}}
+    <div class="form-group comment">
+      <label for="comment-input">Add Your Comment Below!</label>
+      <input class="form-input" type="comment" id="comment-input" />
+  </div>
+    <button class="btn btn-primary" id="comment-button">Save Comment</button>
+</div>
+
+{{!-- loop and render the comments, only one post(content) --}}
+<main>
+  <section>
+    {{#each comments as |comment| }}
+    <article>
+      <div>
+        <p>
+          {{comment.content}}
+          <p class="commentLine"> {{comment.user.name}} </p>
+          <p class="commentLine"> {{comment.date_created}} </p>
+        </p>
+      </div>
+    </article>
+    {{/each}}
+  </section>
+</main>
+
+<script src="/js/dashboard.js"></script>
