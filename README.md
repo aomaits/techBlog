@@ -1,4 +1,4 @@
-# techBlog
+# Technology Blog
 
 ## Description
 
@@ -13,7 +13,6 @@ The application was originally deployed via Heroku but it is no longer hosted th
 
 ## Future Development
 Future development for this project is unlikely. Rather than refactoring this project, it might better serve as inspiration for a new build using different technologies. 
-
 
 ## Installation
 N/A
